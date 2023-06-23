@@ -1,0 +1,112 @@
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  background-color: #ececec;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+}
+
+form input {
+  width: 100%;
+  outline: none;
+  padding: 5px 20px;
+  font-size: 24px;
+  border: none;
+  margin-right: 20px;
+}
+
+.container form .add {
+  background-color: rgba(255, 0, 0, 0.8);
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+
+.container .tasks {
+  background-color: #ececec;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .tasks .box-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+.container .tasks .task {
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: white;
+  padding: 5px 10px;
+  font-size: 18px;
+  width: calc(100% - 18px);
+  height: 100%;
+  display: flex;
+}
+
+.container .tasks .box-task:hover {
+  background-color: #f7f7f7;
+}
+
+.container .tasks .box-task:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.container .tasks .task.done {
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.container .tasks .box-task button {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  padding: 10px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn {
+  background-color: rgba(255, 0, 0, 0.8);
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  margin: 10px;
+}
+.deleteAll {
+  background-color: #ff0000;
+  color: white;
+  font-size: 24px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: max-content;
+  text-align: center;
+  cursor: pointer;
+}
