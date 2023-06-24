@@ -1,3 +1,8 @@
+# Simple To-do-list-app by use React
+### set/get tasks to/from local storage
+#### An application that adds tasks smoothly and determines the tasks that have been completed, as well as the possibility of removing tasks
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
