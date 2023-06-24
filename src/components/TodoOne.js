@@ -1,9 +1,12 @@
-import { React, useState } from "react";
-import TodoTwo from "./TodoTwo";
+import { React, useEffect, useState } from "react";
+import TodoButtons from "./TodoButtons";
 import "../App.css";
+
 const TodoOne = () => {
   const [text, setText] = useState("");
-  let [list, setList] = useState([]);
+  let [list, setList] = useState(
+    localStorage.getItem("list") ? JSON.parse(localStorage.getItem("list")) : []
+  );
   const [toShow, setToShow] = useState("all");
 
   const handleSubmit = (e) => {
@@ -20,19 +23,27 @@ const TodoOne = () => {
   };
 
   const handleComplete = (id) => {
-    setList(
-      list.map((ele) =>
-        ele.id === id ? { ...ele, complete: !ele.complete } : ele
-      )
-    );
+    if (toShow === "all") {
+      setList(
+        list.map((ele) =>
+          ele.id === id ? { ...ele, complete: !ele.complete } : ele
+        )
+      );
+    } else {
+      updateToShow("all");
+    }
   };
+
   const handleChange = (e) => {
     setText(e.target.value);
     updateToShow("all");
   };
+
   const handleDelete = (id) => {
-    setList(list.filter((ele) => ele.id !== id));
+    const items = list.filter((ele) => ele.id !== id);
+    setList([...items]);
   };
+
   const updateToShow = (ele) => {
     setToShow(ele);
   };
@@ -41,10 +52,21 @@ const TodoOne = () => {
   } else if (toShow === "complete") {
     list = list.filter((ele) => ele.complete);
   }
+
   const removeAllTodoComplete = () => {
     setList(list.filter((ele) => !ele.complete));
-    updateToShow("all");
   };
+
+  useEffect(() => {
+    const list = JSON.parse(localStorage.getItem("list"));
+    if (list) {
+      setList(list);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   return (
     <>
@@ -63,13 +85,21 @@ const TodoOne = () => {
             >
               {ele.text}
             </div>
-            <button onClick={() => handleDelete(ele.id)}>X</button>
+            <button
+              className={
+                toShow === "all" ? "" : "btn-h"
+              }
+              onClick={() => handleDelete(ele.id)}
+            >
+              X
+            </button>
           </div>
         ))}
       </div>
-      <TodoTwo
+      <TodoButtons
         updateToShow={updateToShow}
         removeAllTodoComplete={removeAllTodoComplete}
+        toShow={toShow}
       />
     </>
   );

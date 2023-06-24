@@ -1,5 +1,6 @@
 import { React } from "react";
-const TodoTwo = (props) => {
+
+const TodoButtons = (props) => {
   return (
     <div className="box-btn">
       <div>
@@ -13,11 +14,11 @@ const TodoTwo = (props) => {
           Complete
         </button>
       </div>
-      <button className="btn" onClick={() => props.removeAllTodoComplete()}>
+      <button className={props.toShow === "all" ? "btn" : "btn-h"} onClick={() => props.removeAllTodoComplete()}>
         Remove All Todo Complete
       </button>
     </div>
   );
 };
 
-export default TodoTwo;
+export default TodoButtons;
